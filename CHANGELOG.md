@@ -6,8 +6,14 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- French starter cliché list (`references/banned/generic-fr.txt`).
+
 ### Fixed
 
+- `extract_signals.py`: a server that breaks the HTTP protocol (for example more than 100
+  response headers) is recorded as a failed page instead of ending the whole batch.
 - `extract_signals.py`: headlines built from one element per word (animated spans, `<br>`) no
   longer lose their spaces ("Planfirst.Paylater." became "Plan first. Pay later.");
   letter-by-letter spans still join into one word.

@@ -170,8 +170,8 @@ scripts without word spacing (Chinese, Japanese, attached prefixes) and word-bou
 for Latin scripts. Tests cover UTF-8, Windows-1254, GB18030 and a right-to-left page.
 
 What the repo ships per language is only a starter list of marketing clichés
-(`references/banned/generic-<lang>.txt`) for English, German, Spanish, Arabic, Turkish and
-Russian. Other languages start with an empty list and grow it in `markets/<locale>/banned.txt`.
+(`references/banned/generic-<lang>.txt`) for English, German, French, Spanish, Arabic, Turkish
+and Russian. Other languages start with an empty list and grow it in `markets/<locale>/banned.txt`.
 Competitor discovery should use the market's own search engine (Baidu, Yandex, Naver),
 which the skill asks for explicitly.
 

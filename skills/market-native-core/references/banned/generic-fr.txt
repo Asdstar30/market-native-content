@@ -1,0 +1,29 @@
+# Starter list: French marketing clichés and machine-translation tells.
+# One term per line. Copy into markets/<fr-xx>/banned.txt and extend with the
+# phrases every competitor in that market repeats.
+solutions innovantes
+solution innovante
+leader du marché
+leader dans son domaine
+partenaire de confiance
+votre partenaire privilégié
+haut de gamme
+qualité supérieure
+qualité irréprochable
+à la pointe
+à la pointe de la technologie
+de pointe
+clé en main
+incontournable
+révolutionnaire
+excellence
+savoir-faire unique
+sans égal
+sur mesure pour tous vos besoins
+n'hésitez pas à nous contacter
+dans un monde en constante évolution
+au cœur de
+synergie
+optimiser vos performances
+une expérience unique
+faire la différence

@@ -21,6 +21,7 @@ Examples:
 from __future__ import annotations
 
 import argparse
+import http.client
 import ipaddress
 import json
 import re
@@ -363,7 +364,9 @@ def main(argv: list[str] | None = None) -> int:
     for url in args.urls:
         try:
             raw, charset, status = fetch(url, args.timeout)
-        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, ValueError, OSError) as exc:
+        # http.client.HTTPException covers servers that break the protocol, for example one
+        # that sends more than 100 headers; one bad page must not end the whole batch.
+        except (urllib.error.URLError, urllib.error.HTTPError, http.client.HTTPException, TimeoutError, ValueError, OSError) as exc:
             mnc.eprint(f"error: {url}: {exc}")
             records.append(
                 {

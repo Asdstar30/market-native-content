@@ -89,6 +89,23 @@ class ExtractTests(unittest.TestCase):
         self.assertEqual(record["h2"], ["Grow"])
         self.assertEqual(record["h3"], ["We ship in three weeks."])
 
+    def test_protocol_error_on_one_url_does_not_stop_the_batch(self) -> None:
+        import http.client
+
+        def broken_fetch(url: str, timeout: int):
+            raise http.client.HTTPException("got more than 100 headers")
+
+        original = extract.fetch
+        extract.fetch = broken_fetch
+        try:
+            code, stdout, stderr = helpers.run(extract, ["https://example.com/a", "--input", str(helpers.FIXTURES / "utf8_rtl.html")])
+        finally:
+            extract.fetch = original
+        self.assertEqual(code, 0, stderr)
+        records = json.loads(stdout)
+        self.assertEqual(len(records), 2)
+        self.assertIn("more than 100 headers", stderr)
+
     def test_refuses_non_public_urls(self) -> None:
         for url in ("http://localhost/", "http://127.0.0.1:8080/", "http://10.0.0.5/", "http://169.254.169.254/latest/", "ftp://example.com/", "file:///etc/passwd"):
             with self.assertRaises(ValueError, msg=url):
