@@ -1,0 +1,10 @@
+# Banned terms for en-us (fictional example). Generic English clichés are added
+# automatically by build_context.py from the skill's references; list here only what
+# every local competitor repeats.
+hollywood smile
+smile makeover
+latest technology
+team of experts
+pain-free
+gentle dentistry
+premier destination

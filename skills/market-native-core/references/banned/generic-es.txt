@@ -1,0 +1,17 @@
+# Starter list of Spanish corporate-site clichés (usable across es-* markets).
+# One term per line, case-insensitive substring match. Extend per market in
+# markets/<locale>/banned.txt.
+
+soluciones integrales
+soluciones a medida
+soluciones innovadoras
+líder en el sector
+líderes del mercado
+la mejor calidad
+máxima calidad
+a la vanguardia
+compromiso con la excelencia
+atención personalizada
+su socio de confianza
+servicio de primera
+no dude en contactarnos

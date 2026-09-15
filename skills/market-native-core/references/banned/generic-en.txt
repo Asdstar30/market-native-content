@@ -1,0 +1,65 @@
+# Starter list of English marketing clichés and AI-text tells.
+# One term per line. Matching is case-insensitive and word-boundary based.
+# Sources: overlap of public "signs of AI writing" lists and B2B landing-page audits.
+# Extend per market in markets/<locale>/banned.txt. Do not treat this as complete.
+
+# Vocabulary
+delve
+tapestry
+seamless
+seamlessly
+leverage
+cutting-edge
+state-of-the-art
+innovative
+innovation-driven
+robust
+unlock
+unleash
+empower
+elevate
+game-changer
+game-changing
+best-in-class
+world-class
+industry-leading
+leading provider
+one-stop shop
+holistic
+synergy
+transformative
+revolutionize
+revolutionise
+next-level
+top-notch
+unparalleled
+unmatched quality
+comprehensive solutions
+end-to-end solutions
+tailored solutions
+bespoke solutions
+turnkey solutions
+hassle-free
+effortless
+second to none
+at the forefront
+harness the power
+testament to
+pivotal
+meticulous
+vibrant
+bustling
+
+# Phrases
+in today's fast-paced world
+in the ever-evolving
+look no further
+we pride ourselves
+passionate about
+dedicated to excellence
+commitment to excellence
+it's worth noting
+navigate the complexities
+embark on a journey
+dive into
+whether you're a

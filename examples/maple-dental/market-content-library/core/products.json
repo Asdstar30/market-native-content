@@ -1,0 +1,18 @@
+{
+  "products": [
+    {
+      "product_id": "clear-aligners",
+      "name": {"en": "Clear aligners"},
+      "category": "orthodontics",
+      "tags": ["orthodontics", "adult"],
+      "status": "example"
+    },
+    {
+      "product_id": "implants",
+      "name": {"en": "Dental implants"},
+      "category": "implantology",
+      "tags": ["implants", "adult"],
+      "status": "example"
+    }
+  ]
+}

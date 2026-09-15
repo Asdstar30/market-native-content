@@ -1,0 +1,9 @@
+{
+  "default": {
+    "hero_title": 60,
+    "hero_subtitle": 140,
+    "hero_cta": 24,
+    "meta_title": 60,
+    "meta_description": 155
+  }
+}

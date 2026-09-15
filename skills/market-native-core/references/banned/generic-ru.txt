@@ -1,0 +1,20 @@
+# Starter list of Russian B2B-site clichés.
+# One term per line, case-insensitive substring match. Extend per market in
+# markets/<locale>/banned.txt (Russian-speaking markets differ in certification vocabulary).
+
+лидер рынка
+лидер отрасли
+инновационные решения
+комплексные решения
+индивидуальный подход
+высочайшее качество
+лучшее качество
+надежный партнер
+надёжный партнёр
+гибкая система скидок
+широкий ассортимент
+динамично развивающаяся компания
+команда профессионалов
+оптимальное соотношение цены и качества
+мы ценим каждого клиента
+безупречное качество

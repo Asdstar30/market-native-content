@@ -1,0 +1,31 @@
+# Starter list of Arabic marketing clichés (Modern Standard, used across markets).
+# One term per line. Matching normalises diacritics and alef/yeh/teh-marbuta variants
+# and is substring based, so attached prefixes (و، ب، ال) still match.
+# Extend per market in markets/<locale>/banned.txt.
+
+حلول متكاملة
+حلول مبتكرة
+حلول شاملة
+الرائدة في مجال
+رائدة في
+الأفضل على الإطلاق
+جودة لا مثيل لها
+بأعلى معايير الجودة
+أعلى مستويات الجودة
+شريكك الموثوق
+شريكك الأمثل
+خدمات متميزة
+نسعى دائما
+نسعى جاهدين
+نفخر بتقديم
+تجربة فريدة
+تجربة استثنائية
+نرتقي ب
+الحل الأمثل
+لا تتردد في التواصل
+نحن هنا من أجلك
+في عالم سريع التغير
+بلمسة عصرية
+احترافية عالية
+بكل احترافية
+رؤيتنا ورسالتنا

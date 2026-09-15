@@ -1,0 +1,29 @@
+{
+  "locale": "en-us",
+  "objections": [
+    {
+      "objection_id": "obj-cost-unknown",
+      "statement": "I will not know the total cost until I am already committed.",
+      "buyer_words": ["Will I know the total cost before I start?", "Are there hidden fees?", "Is that price all-in?"],
+      "audiences": ["patient"],
+      "answer_claim_refs": ["claim-written-plan-002"],
+      "tags": ["price", "trust", "orthodontics", "implants"]
+    },
+    {
+      "objection_id": "obj-duration",
+      "statement": "How long will this take, and how many visits?",
+      "buyer_words": ["How long does it take?", "How many visits?"],
+      "audiences": ["patient"],
+      "answer_claim_refs": ["claim-written-plan-002", "claim-first-visit-45min-003"],
+      "tags": ["speed", "orthodontics", "implants"]
+    },
+    {
+      "objection_id": "obj-first-visit-useless",
+      "statement": "The first visit is a sales talk; the real assessment needs another appointment.",
+      "buyer_words": ["Do I actually get anything out of the first visit?", "Do I have to come back for the X-ray?"],
+      "audiences": ["patient"],
+      "answer_claim_refs": ["claim-same-day-scan-001"],
+      "tags": ["speed", "trust", "orthodontics", "implants"]
+    }
+  ]
+}

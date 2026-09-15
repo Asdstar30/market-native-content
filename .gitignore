@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Generated context packs and extraction output inside the example library
+examples/**/packs/
+signals*.json
+
+# Real project libraries must never be committed to this repo.
+# If you develop against a real company's library, keep it outside the repo
+# or add its folder name here.
+market-content-library/
+!examples/**/market-content-library/
+
+# Packaged skills
+*.skill
+
+# OS and editors
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp

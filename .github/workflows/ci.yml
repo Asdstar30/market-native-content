@@ -1,0 +1,35 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    name: ${{ matrix.os }} / py${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Byte-compile scripts
+        run: python -m compileall -q skills
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Example library validates
+        run: >
+          python skills/market-native-core/scripts/validate_copy.py
+          --copy examples/maple-dental/market-content-library/channels/web/copy/en-us/product--clear-aligners--patient.md
+          --library examples/maple-dental/market-content-library
+      - name: README avoids the clichés it bans
+        run: >
+          python skills/market-native-core/scripts/validate_copy.py
+          --text README.md
+          --banned skills/market-native-core/references/banned/generic-en.txt

@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="730" viewBox="0 0 1160 730" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13.5">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4b5563"/>
+    </marker>
+    <style>
+      .title { font-size: 20px; font-weight: 700; fill: #111827; }
+      .col { font-size: 15px; font-weight: 700; fill: #374151; letter-spacing: .3px; }
+      .box { fill: #ffffff; stroke: #1f2937; stroke-width: 1.5; rx: 8; }
+      .lib { fill: #eef2ff; stroke: #3730a3; }
+      .script { fill: #ecfdf5; stroke: #047857; }
+      .human { fill: #fff7ed; stroke: #c2410c; }
+      .pack { fill: #f0f9ff; stroke: #0369a1; }
+      .h { font-size: 15px; font-weight: 700; fill: #111827; }
+      .t { fill: #1f2937; }
+      .m { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12.5px; fill: #111827; }
+      .s { font-size: 12px; fill: #4b5563; }
+      .flow { stroke: #4b5563; stroke-width: 1.6; fill: none; marker-end: url(#arrow); }
+      .badge { font-size: 11px; font-weight: 700; fill: #ffffff; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1160" height="730" fill="#ffffff"/>
+  <text x="24" y="34" class="title">market-native-content: how a page gets written</text>
+  <text x="24" y="56" class="s">Build the library once per project (left). Every writing task then gets a small generated pack; the model writes from it; a script checks the result (right).</text>
+
+  <text x="24" y="96" class="col">1  BUILD ONCE PER PROJECT AND MARKET</text>
+  <text x="620" y="96" class="col">2  EVERY WRITING TASK (fast-copy)</text>
+
+  <!-- Inputs -->
+  <rect x="24" y="112" width="272" height="98" class="box"/>
+  <text x="38" y="134" class="h">Inputs</text>
+  <text x="38" y="156" class="t">Brief: buyer, problem, proof, action</text>
+  <text x="38" y="175" class="t">Buyer emails, RFQs, reviews, calls</text>
+  <text x="38" y="194" class="t">Catalogues, datasheets, tenders</text>
+
+  <!-- Extract -->
+  <rect x="310" y="112" width="260" height="98" class="box script"/>
+  <rect x="310" y="112" width="64" height="20" rx="8" fill="#047857"/>
+  <text x="320" y="126" class="badge">SCRIPT</text>
+  <text x="324" y="150" class="m">extract_signals.py</text>
+  <text x="324" y="169" class="t">5 to 8 competitor pages per locale</text>
+  <text x="324" y="186" class="s">H1, subtitle, CTAs, headings, quality score</text>
+  <text x="324" y="201" class="s">about 300 tokens per page</text>
+
+  <!-- Gate 1 -->
+  <rect x="310" y="224" width="260" height="38" class="box human"/>
+  <rect x="310" y="224" width="64" height="20" rx="8" fill="#c2410c"/>
+  <text x="320" y="238" class="badge">HUMAN</text>
+  <text x="384" y="249" class="t">Gate 1: pick the real competitors</text>
+
+  <!-- Library -->
+  <rect x="24" y="280" width="546" height="296" class="box lib"/>
+  <text x="38" y="304" class="h">market-content-library/  (single source of truth, in git)</text>
+
+  <rect x="38" y="318" width="170" height="242" class="box"/>
+  <text x="50" y="340" class="m">core/</text>
+  <text x="50" y="358" class="s">changes with the company</text>
+  <text x="50" y="384" class="t">company.json</text>
+  <text x="50" y="404" class="t">products.json</text>
+  <text x="50" y="424" class="t">claims.json</text>
+  <text x="50" y="441" class="s">evidence, owner, expiry,</text>
+  <text x="50" y="456" class="s">eligible markets, channels</text>
+  <text x="50" y="480" class="t">brand.md</text>
+  <text x="50" y="497" class="s">differentiation table:</text>
+  <text x="50" y="512" class="s">we say / they say / proof</text>
+
+  <rect x="216" y="318" width="170" height="242" class="box"/>
+  <text x="228" y="340" class="m">markets/en-us/</text>
+  <text x="228" y="358" class="s">changes with the market</text>
+  <text x="228" y="384" class="t">glossary.json</text>
+  <text x="228" y="401" class="s">term, search term, status</text>
+  <text x="228" y="425" class="t">objections.json</text>
+  <text x="228" y="442" class="s">in the buyer's own words</text>
+  <text x="228" y="466" class="t">voice.md</text>
+  <text x="228" y="490" class="t">banned.txt</text>
+  <text x="228" y="514" class="t">competitors.json</text>
+  <text x="228" y="531" class="s">paraphrased, dated</text>
+
+  <rect x="394" y="318" width="170" height="242" class="box"/>
+  <text x="406" y="340" class="m">channels/web/</text>
+  <text x="406" y="358" class="s">changes with the format</text>
+  <text x="406" y="384" class="t">limits.json</text>
+  <text x="406" y="401" class="s">chars per field, per locale</text>
+  <text x="406" y="425" class="t">copy/en-us/*.md</text>
+  <text x="406" y="442" class="s">front matter: asset_id,</text>
+  <text x="406" y="457" class="s">revision, status, claims</text>
+  <text x="406" y="486" class="t">app/  document/  email/</text>
+  <text x="406" y="503" class="s">reserved for later adapters</text>
+
+  <!-- Gate 2 -->
+  <rect x="24" y="592" width="546" height="38" class="box human"/>
+  <rect x="24" y="592" width="64" height="20" rx="8" fill="#c2410c"/>
+  <text x="34" y="606" class="badge">HUMAN</text>
+  <text x="98" y="617" class="t">Gate 2: technical terms and every claim need a named approver</text>
+
+  <!-- Arrows, left -->
+  <path d="M 160 210 L 160 280" class="flow"/>
+  <path d="M 440 262 L 440 280" class="flow"/>
+  <path d="M 296 160 L 310 160" class="flow"/>
+
+  <!-- Right column -->
+  <rect x="620" y="112" width="516" height="64" class="box script"/>
+  <rect x="620" y="112" width="64" height="20" rx="8" fill="#047857"/>
+  <text x="630" y="126" class="badge">SCRIPT</text>
+  <text x="634" y="150" class="m">build_context.py --locale en-us --channel web --page product</text>
+  <text x="634" y="168" class="s">Filters by fixed selectors. The model never decides what to read.</text>
+
+  <rect x="620" y="200" width="516" height="150" class="box pack"/>
+  <rect x="620" y="200" width="104" height="20" rx="8" fill="#0369a1"/>
+  <text x="630" y="214" class="badge">CONTEXT PACK</text>
+  <text x="634" y="240" class="t">Eligible claims only: verified, unexpired, allowed here</text>
+  <text x="634" y="260" class="t">Required terms (approved), blocked (pending), forbidden (banned, rejected)</text>
+  <text x="634" y="280" class="t">Buyer objections for this audience, each linked to its answering claim</text>
+  <text x="634" y="300" class="t">Voice, per-field length limits, competitor pattern, differentiation</text>
+  <text x="634" y="320" class="t">Warnings: what is missing or stale, so nothing is filled from memory</text>
+  <text x="634" y="340" class="s">About 1,400 tokens for a full product page.</text>
+
+  <rect x="620" y="374" width="516" height="92" class="box"/>
+  <rect x="620" y="374" width="64" height="20" rx="8" fill="#1f2937"/>
+  <text x="630" y="388" class="badge">MODEL</text>
+  <text x="634" y="412" class="h">Writes from the pack, in the target locale, never translating</text>
+  <text x="634" y="432" class="t">Blueprint per page type. 20 hero candidates scored on a rubric; top 3 to the user.</text>
+  <text x="634" y="452" class="s">Strong model here. Token savings come from the scripts, never from this step.</text>
+
+  <rect x="620" y="490" width="516" height="92" class="box script"/>
+  <rect x="620" y="490" width="64" height="20" rx="8" fill="#047857"/>
+  <text x="630" y="504" class="badge">SCRIPT</text>
+  <text x="634" y="528" class="m">validate_copy.py</text>
+  <text x="634" y="548" class="t">Errors: forbidden or blocked term, ineligible claim, field over limit</text>
+  <text x="634" y="568" class="t">Warnings: number without a claim, no approved term used, em dash</text>
+
+  <rect x="620" y="606" width="516" height="64" class="box human"/>
+  <rect x="620" y="606" width="64" height="20" rx="8" fill="#c2410c"/>
+  <text x="630" y="620" class="badge">HUMAN</text>
+  <text x="634" y="644" class="t">Reviews copy and warnings. Approves, or rejects with a coded reason.</text>
+  <text x="634" y="662" class="s">draft &gt; pending_review &gt; approved; a changed claim flips it to needs_revalidation</text>
+
+  <!-- Arrows, right -->
+  <path d="M 878 176 L 878 200" class="flow"/>
+  <path d="M 878 350 L 878 374" class="flow"/>
+  <path d="M 878 466 L 878 490" class="flow"/>
+  <path d="M 878 582 L 878 606" class="flow"/>
+
+  <!-- Library to pack -->
+  <path d="M 570 330 C 600 330, 600 250, 620 250" class="flow"/>
+  <text x="576" y="318" class="s">reads</text>
+
+  <!-- Approved copy back to library -->
+  <path d="M 620 650 C 592 650, 592 470, 564 470" class="flow"/>
+  <text x="634" y="694" class="s">Approved asset is saved to channels/web/copy/; the choice is logged in decisions.md.</text>
+
+  <!-- Modes -->
+  <text x="24" y="668" class="col">MODES</text>
+  <text x="24" y="690" class="t">build: new project or market. High cost, once.</text>
+  <text x="24" y="708" class="t">refresh: re-run one stage when a competitor, product or claim changes.</text>
+  <text x="24" y="726" class="t">fast-copy: one pack, one write, one check. No live research unless the pack says data is missing or stale.</text>
+</svg>

@@ -1,0 +1,3 @@
+# Banned terms for __LOCALE__. One per line, # for comments.
+# Seed from the skill's references/banned/generic-<lang>.txt, then add the clichés
+# every competitor in this market repeats.

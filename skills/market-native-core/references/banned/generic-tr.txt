@@ -1,0 +1,23 @@
+# Starter list of Turkish corporate-site clichés.
+# One term per line, case-insensitive substring match (agglutination makes word
+# boundaries unreliable). Extend per market in markets/<locale>/banned.txt.
+
+sektöründe lider
+sektörün öncüsü
+sektörde öncü
+kaliteden ödün vermeden
+müşteri memnuniyeti odaklı
+en kaliteli
+en iyi hizmet
+yenilikçi çözümler
+çözüm ortağınız
+güvenilir çözüm ortağı
+kusursuz hizmet
+uçtan uca çözümler
+benzersiz
+eşsiz kalite
+profesyonel ekibimizle
+siz değerli müşterilerimiz
+size özel çözümler
+kalite ve güven
+vizyonumuz ve misyonumuz

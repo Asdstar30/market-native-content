@@ -1,0 +1,65 @@
+{
+  "locale": "en-us",
+  "competitors": [
+    {
+      "name": "Fictional clinic A",
+      "url": "https://clinic-a.invalid/",
+      "retrieved_at": "2026-09-08",
+      "market_relevance": "high",
+      "extraction_quality": "high",
+      "hero": {"h1": "Your Hollywood smile starts here", "subtitle": "A team of experts using the latest technology", "cta": "Book now"},
+      "section_order": ["services", "doctors", "before-after", "booking"],
+      "proof_used": ["doctor credentials", "before/after photos"],
+      "terms_observed": ["clear aligners", "dental implants", "whitening"],
+      "gaps": "No prices, no treatment duration, no written plan."
+    },
+    {
+      "name": "Fictional clinic B",
+      "url": "https://clinic-b.invalid/",
+      "retrieved_at": "2026-09-08",
+      "market_relevance": "high",
+      "extraction_quality": "medium",
+      "hero": {"h1": "Family dentist in Denver", "subtitle": "", "cta": "Call us"},
+      "section_order": ["services", "booking", "reviews"],
+      "proof_used": ["Google reviews"],
+      "terms_observed": ["clear aligners", "consultation"],
+      "gaps": "Hero is generic; phone-only contact."
+    },
+    {
+      "name": "Fictional clinic C",
+      "url": "https://clinic-c.invalid/",
+      "retrieved_at": "2026-09-09",
+      "market_relevance": "medium",
+      "extraction_quality": "low",
+      "hero": {"h1": "", "subtitle": "", "cta": "Request appointment"},
+      "section_order": ["services", "doctors", "booking"],
+      "proof_used": ["certificates"],
+      "terms_observed": ["dental implants"],
+      "gaps": "Hero rendered in a slider; text unavailable to extraction."
+    },
+    {
+      "name": "Fictional clinic D",
+      "url": "https://clinic-d.invalid/",
+      "retrieved_at": "2026-09-10",
+      "market_relevance": "high",
+      "extraction_quality": "high",
+      "hero": {"h1": "Clear aligners from $99 a month", "subtitle": "Financing available", "cta": "Get started"},
+      "section_order": ["offers", "services", "doctors", "booking"],
+      "proof_used": ["financing partner logo"],
+      "terms_observed": ["clear aligners", "financing"],
+      "gaps": "Leads with financing; total cost still not stated."
+    },
+    {
+      "name": "Fictional clinic E",
+      "url": "https://clinic-e.invalid/",
+      "retrieved_at": "2026-09-10",
+      "market_relevance": "medium",
+      "extraction_quality": "high",
+      "hero": {"h1": "Denver's premier destination for dental care", "subtitle": "Latest technology and a team of experts", "cta": "Schedule a visit"},
+      "section_order": ["services", "doctors", "booking"],
+      "proof_used": ["awards"],
+      "terms_observed": ["dental implants", "braces"],
+      "gaps": "Superlatives without evidence."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Maple Dental",
+  "one_line": "A single-location dental clinic in Denver, Colorado, focused on orthodontics and implants for adults.",
+  "audiences": [
+    {
+      "audience_id": "patient",
+      "description": "Adults aged 25 to 45 paying out of pocket or with partial insurance, comparing clinics online, worried about hidden cost and pain.",
+      "status": "example"
+    }
+  ],
+  "status": "example"
+}

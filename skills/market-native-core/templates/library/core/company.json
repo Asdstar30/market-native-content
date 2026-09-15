@@ -1,0 +1,12 @@
+{
+  "name": "__PROJECT_NAME__",
+  "one_line": "",
+  "audiences": [
+    {
+      "audience_id": "buyer",
+      "description": "Who buys, what they are responsible for, what they fear.",
+      "status": "needs_confirmation"
+    }
+  ],
+  "status": "draft"
+}

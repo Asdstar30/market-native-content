@@ -1,0 +1,9 @@
+# Normalise line endings so Windows and Linux contributors produce identical diffs.
+* text=auto eol=lf
+
+# Fixture pages carry deliberate legacy encodings; never re-encode or normalise them.
+tests/fixtures/** -text
+
+*.png binary
+*.jpg binary
+*.skill binary

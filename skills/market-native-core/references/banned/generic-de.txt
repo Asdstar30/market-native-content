@@ -1,0 +1,19 @@
+# Starter list of German corporate-site clichés.
+# One term per line, case-insensitive substring match. Extend per market in
+# markets/<locale>/banned.txt.
+
+innovative lösungen
+maßgeschneiderte lösungen
+ganzheitliche lösungen
+führender anbieter
+marktführer
+höchste qualität
+höchsten ansprüchen
+kompetenter partner
+zuverlässiger partner
+partner auf augenhöhe
+kundenzufriedenheit steht an erster stelle
+rundum-sorglos
+aus einer hand
+langjährige erfahrung
+state of the art

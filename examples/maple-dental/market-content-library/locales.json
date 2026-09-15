@@ -1,0 +1,16 @@
+{
+  "locales": [
+    {
+      "id": "en-us",
+      "language": "en",
+      "market": "US",
+      "jurisdiction": "US",
+      "primary_language_for_buyers": true,
+      "search_engine": "google.com",
+      "default_cta": "booking-form",
+      "audience_notes": "Adults booking for themselves; they compare three clinics online and read reviews before visiting.",
+      "stale_after_days": 180,
+      "status": "active"
+    }
+  ]
+}
