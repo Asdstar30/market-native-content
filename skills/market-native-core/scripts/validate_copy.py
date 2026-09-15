@@ -100,9 +100,16 @@ def check_asset(meta: dict[str, Any], fields: dict[str, str], pack: dict[str, An
         report.warn("claim_refs is empty: the copy promises nothing provable, or the references were not recorded")
 
     limits = pack.get("limits", {})
+    partial_scope = str(meta.get("content_scope", "full-page")) != "full-page"
     for field, limit in limits.items():
+        if field.startswith("_"):
+            continue
         if field not in body_fields:
-            report.warn(f"field '{field}' has a limit but is not in the asset")
+            # A hero-only or section asset is not expected to carry page-level fields.
+            if partial_scope:
+                report.note(f"field '{field}' not in this {meta.get('content_scope')} asset (limit {limit})")
+            else:
+                report.warn(f"field '{field}' has a limit but is not in the asset")
             continue
         length = len(body_fields[field].replace("\n", " ").strip())
         if length > int(limit):

@@ -129,7 +129,9 @@ competitors do not, and the `claim_id` that proves each point. Keep it under a p
 - Technical and regulatory terms in `pending_review` are blocked from copy. Commercial terms
   in `pending_review` may appear with a warning.
 - `search_term` is what buyers type into a search engine. It is frequently not the approved
-  technical term; both are needed.
+  technical term; both are needed. Take it from evidence (competitor `terms_observed`, buyer
+  emails, search suggestions in the market's engine) and note the source. A `search_term` copied
+  from `term` is a placeholder, not research.
 - `alternatives_to_avoid` become forbidden terms in every pack for this locale.
 
 ### `markets/<locale>/objections.json`

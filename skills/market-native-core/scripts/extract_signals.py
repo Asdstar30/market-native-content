@@ -85,10 +85,21 @@ class SignalParser(HTMLParser):
         self._buffer_tag = tag
 
     def _flush_buffer(self) -> str:
-        text = " ".join("".join(self._buffer or []).split())
+        text = join_segments(self._buffer or [])
         self._buffer = None
         self._buffer_tag = ""
         return text
+
+    def _mark_boundary(self, tag: str) -> None:
+        """Record an element edge inside the text being collected.
+
+        Headlines are often built from one element per word (animated spans, <br>), and the
+        words carry no spaces of their own. A <br> or block edge is always a space; other
+        edges are resolved in join_segments.
+        """
+        if self._buffer is None or tag == self._buffer_tag:
+            return
+        self._buffer.append(" " if tag in BREAK_TAGS else SEGMENT_MARK)
 
     # -- parser callbacks --------------------------------------------------
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
@@ -104,6 +115,7 @@ class SignalParser(HTMLParser):
             self._nav_depth += 1
         if tag == "header":
             self._header_depth += 1
+        self._mark_boundary(tag)
         if tag == "meta":
             name = (self._attr(attrs, "name") or self._attr(attrs, "property")).lower()
             content = self._attr(attrs, "content")
@@ -145,7 +157,10 @@ class SignalParser(HTMLParser):
             self._nav_depth = max(0, self._nav_depth - 1)
         if tag == "header":
             self._header_depth = max(0, self._header_depth - 1)
-        if self._buffer is None or tag != self._buffer_tag:
+        if self._buffer is not None and tag != self._buffer_tag:
+            self._mark_boundary(tag)
+            return
+        if self._buffer is None:
             return
         text = self._flush_buffer()
         if not text:
@@ -174,6 +189,26 @@ class SignalParser(HTMLParser):
         if self._skip_depth or self._buffer is None:
             return
         self._buffer.append(data)
+
+
+SEGMENT_MARK = "\x00"
+BREAK_TAGS = frozenset({"br", "div", "p", "li", "ul", "ol", "section", "h1", "h2", "h3", "h4", "tr", "td"})
+SPACE_BEFORE_PUNCT_RE = re.compile(r"\s+([.,;:!?%)\]])")
+
+
+def join_segments(parts: list[str]) -> str:
+    """Join collected text, deciding what an inline element edge means.
+
+    One element per letter (a letter-by-letter animation) means the edges are not word breaks.
+    One element per word means they are. Anything in between keeps the edge as a space and
+    tidies the space before punctuation that this can leave behind.
+    """
+    raw = "".join(parts)
+    chunks = [chunk for chunk in raw.split(SEGMENT_MARK) if chunk.strip()]
+    single_letters = sum(1 for chunk in chunks if len(chunk.strip()) == 1)
+    per_letter = len(chunks) >= 3 and single_letters / len(chunks) >= 0.8
+    joined = raw.replace(SEGMENT_MARK, "" if per_letter else " ")
+    return SPACE_BEFORE_PUNCT_RE.sub(r"\1", " ".join(joined.split()))
 
 
 def detect_encoding(raw: bytes, header_charset: str, hint: str) -> str:

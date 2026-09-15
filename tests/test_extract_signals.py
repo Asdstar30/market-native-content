@@ -71,6 +71,24 @@ class ExtractTests(unittest.TestCase):
         self.assertEqual(record["h1"], "低烟无卤控制电缆制造商")
         self.assertIn("获取报价", record["ctas"])
 
+    def test_headline_split_into_elements_keeps_word_spaces(self) -> None:
+        html = (
+            "<html lang='en'><body>"
+            "<h1><span>Plan</span><span>first.</span><br><span>Pay</span><span>later.</span></h1>"
+            "<h2><span>G</span><span>r</span><span>o</span><span>w</span></h2>"
+            "<h3>We <strong>ship</strong> in <em>three</em> weeks.</h3>"
+            "</body></html>"
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            page = Path(tmp) / "split.html"
+            page.write_text(html, encoding="utf-8")
+            code, stdout, _ = helpers.run(extract, ["--input", str(page)])
+        self.assertEqual(code, 0, stdout)
+        record = json.loads(stdout)[0]
+        self.assertEqual(record["h1"], "Plan first. Pay later.")
+        self.assertEqual(record["h2"], ["Grow"])
+        self.assertEqual(record["h3"], ["We ship in three weeks."])
+
     def test_refuses_non_public_urls(self) -> None:
         for url in ("http://localhost/", "http://127.0.0.1:8080/", "http://10.0.0.5/", "http://169.254.169.254/latest/", "ftp://example.com/", "file:///etc/passwd"):
             with self.assertRaises(ValueError, msg=url):

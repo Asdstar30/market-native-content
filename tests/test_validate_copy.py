@@ -46,6 +46,17 @@ class ValidateTests(unittest.TestCase):
         self.assertIn("number '30'", stdout)
         self.assertNotIn("number '1.'", stdout)
 
+    def test_partial_scope_asset_does_not_warn_about_page_fields(self) -> None:
+        text = COPY.read_text(encoding="utf-8").replace("content_scope: full-page", "content_scope: hero")
+        head, _, _ = text.partition("## problem")
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "hero.md"
+            path.write_text(head, encoding="utf-8")
+            code, stdout, _ = helpers.run(validate, ["--copy", str(path)] + LIB_ARGS)
+        self.assertEqual(code, 0, stdout)
+        self.assertNotIn("has a limit but is not in the asset", stdout)
+        self.assertIn("not in this hero asset", stdout)
+
     def test_blocked_term_is_error(self) -> None:
         text = COPY.read_text(encoding="utf-8").replace("## specs\n", "## specs\nWe also offer porcelain veneers.\n")
         with tempfile.TemporaryDirectory() as tmp:

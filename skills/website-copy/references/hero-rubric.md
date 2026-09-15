@@ -14,6 +14,18 @@ three with scores and one line of reasoning. The user chooses.
 
 Discard anything scoring 0 on Clarity or Fit before ranking. Ties break toward Differentiation.
 
+## Fit is measured, not counted
+
+Character limits are a proxy. Before presenting the top three, render them in the real layout
+at the narrowest and the widest breakpoint (390 and 1440 px unless the project says otherwise)
+and check each display line against its own container: no overflow, one row per line. Put the
+text into the live element and compare a range's width with the container's width; a hidden
+overflow on a reveal mask clips the last glyph without any visible error. Measure per locale,
+because each script has its own font and width. Two traps seen in practice: a second line that
+is indented holds fewer characters than the first, and a limit derived from the length of the
+current string says nothing about how much room is left. Write the measured budget back to
+`limits.json`, and score Fit 0 for any candidate that overflows.
+
 Vary the twenty deliberately: outcome-first, audience-first, objection-first, proof-first,
 question, contrast with the usual alternative, process, number-led (only with a claim). The
 same structure twenty times is not twenty candidates.

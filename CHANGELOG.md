@@ -6,6 +6,25 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Fixed
+
+- `extract_signals.py`: headlines built from one element per word (animated spans, `<br>`) no
+  longer lose their spaces ("Planfirst.Paylater." became "Plan first. Pay later.");
+  letter-by-letter spans still join into one word.
+- `build_context.py`: a forbidden term that normalises to an approved term (for example a
+  case-only variant of the brand name) no longer bans the approved term; it is dropped and
+  reported as a pack warning. Found in the first real-project acceptance test.
+- `validate_copy.py`: hero-only and section assets no longer warn about missing page-level
+  fields such as `meta_title`; keys starting with `_` in `limits.json` are ignored.
+
+### Changed
+
+- `website-copy`: the hero rubric now requires measuring the top candidates in the rendered
+  layout at the narrowest and widest breakpoint, per locale, and writing the budget back to
+  `limits.json`.
+- `website-copy`: SEO guidance asks where the page title comes from before a headline is chosen.
+- `market-native-core`: `search_term` must come from evidence, not from a copy of the term.
+
 ## [0.1.0] - 2026-09-15
 
 ### Added

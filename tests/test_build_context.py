@@ -55,6 +55,23 @@ class BuildContextTests(unittest.TestCase):
         self.assertTrue(pack["pack_id"].startswith("cp-"))
         self.assertIn("en-us-web-product", pack["pack_id"])
 
+    def test_case_only_forbidden_variant_does_not_ban_approved_term(self) -> None:
+        import shutil
+
+        with tempfile.TemporaryDirectory() as tmp:
+            lib = Path(tmp) / "lib"
+            shutil.copytree(helpers.EXAMPLE_LIB, lib)
+            glossary = lib / "markets" / "en-us" / "glossary.json"
+            data = json.loads(glossary.read_text(encoding="utf-8"))
+            data["terms"][0]["alternatives_to_avoid"].append("CLEAR ALIGNERS")
+            glossary.write_text(json.dumps(data), encoding="utf-8")
+            args = ["--library", str(lib)] + BASE[2:] + ["--out-dir", tmp]
+            code, stdout, stderr = helpers.run(build, args)
+            self.assertEqual(code, 0, stderr)
+            pack = json.loads(next(Path(tmp).glob("cp-*.json")).read_text(encoding="utf-8"))
+        self.assertNotIn("CLEAR ALIGNERS", pack["forbidden_terms"])
+        self.assertTrue(any("dropped" in w for w in pack["warnings"]))
+
     def test_unknown_locale_fails_clearly(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             args = [a if a != "en-us" else "en-gb" for a in BASE] + ["--out-dir", tmp]

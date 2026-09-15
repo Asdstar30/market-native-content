@@ -190,6 +190,18 @@ def build(lib: Path, sel: dict[str, Any]) -> dict[str, Any]:
     banned_market = mnc.load_term_list(market_dir / "banned.txt")
     banned_generic = mnc.load_term_list(mnc.skill_root() / "references" / "banned" / f"generic-{lang}.txt")
     forbidden = mnc.dedupe(banned_market + terms["forbidden"] + banned_generic)
+    # Matching is case- and variant-insensitive, so a forbidden term that normalises to an
+    # approved term (e.g. "ACME" vs the brand "acme.") would ban the approved term itself.
+    # Drop it and say so, instead of shipping a pack that contradicts itself.
+    approved_norm = {mnc.normalize_text(t.get("term", "")).strip(" .") for t in terms["required"] + terms["draft_ok"]}
+    conflicts = [f for f in forbidden if mnc.normalize_text(f).strip(" .") in approved_norm]
+    if conflicts:
+        forbidden = [f for f in forbidden if f not in conflicts]
+        warnings.append(
+            "forbidden terms equal to an approved term after normalisation were dropped: "
+            + ", ".join(conflicts)
+            + " (case-only variants cannot be enforced; catch them in review)"
+        )
     blocked_terms = [t.get("term", "") for t in terms["blocked"] if t.get("term")]
 
     objs = select_objections(objections, sel)
